@@ -2,7 +2,7 @@
 
 > 本项目使用一个vue-admin-template模板进行的搭建，模板地址如下
 
-[线上地址](http://panjiachen.github.io/vue-admin-template)
+
 
 
 
