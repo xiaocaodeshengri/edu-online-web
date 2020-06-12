@@ -1,9 +1,14 @@
-在线教育后端管理系统
-本项目使用一个vue-admin-template模板进行的搭建，模板地址如下
-线上地址
+# 在线教育后端管理系统
 
-Build Setup
+> 本项目使用一个vue-admin-template模板进行的搭建，模板地址如下
 
+[线上地址](http://panjiachen.github.io/vue-admin-template)
+
+
+
+## Build Setup
+
+```bash
 # Clone project
 git clone https://github.com/PanJiaChen/vue-admin-template.git
 
@@ -21,3 +26,4 @@ npm run build
 
 # Build for production and view the bundle analyzer report
 npm run build --report
+```
