@@ -67,7 +67,7 @@ export const constantRouterMap = [
     ]
   },
 
-  {
+ {
     path: '/course',
     component: Layout,
     redirect: '/course/list',
@@ -135,8 +135,25 @@ export const constantRouterMap = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-export default new Router({
-  // mode: 'history', //后端支持可开
-  scrollBehavior: () => ({ y: 0 }),
+export var asyncRoutes = []
+// 创建路由
+const createRouter = () => new Router({
+  scrollBehavior: () => ({
+    y: 0
+  }),
   routes: constantRouterMap
 })
+
+const router = createRouter()
+// 重置路由
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+export default router
+
+router.selfaddRoutes = function (params){
+  router.matcher = new Router().matcher;
+  router.addRoutes(params)
+}

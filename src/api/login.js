@@ -2,12 +2,13 @@ import request from '@/utils/request'
 
 // 登录
 export function login(username, password) {
+ // debugger
   return request({
     url: '/admin/acl/index/login',
     method: 'post',
     data: {
-      "username":username,
-      "password":password
+      username,
+      password
     }
   })
 }
@@ -23,6 +24,7 @@ export function getInfo(token) {
 
 // 登出
 export function logout() {
+  //debugger
   return request({
     url: '/admin/acl/index/logout',
     method: 'post'

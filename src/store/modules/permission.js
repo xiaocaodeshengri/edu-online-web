@@ -1,29 +1,24 @@
-import { constantRoutes } from '@/router'
+import {asyncRoutes, constantRouterMap } from '@/router'
 import { getMenu } from '@/api/login'
 import Layout from '@/views/layout/Layout'
+import router from '@/router'
+import routeMap from '@/assets/map/menu.js'
 
-function filterAsyncRouter(asyncRouterMap) { // 遍历后台传来的路由字符串，转换为组件对象
-  try {
-    const accessedRouters = asyncRouterMap.filter(route => {
-      if (route.component) {
-        if (route.component === 'Layout') { // Layout组件特殊处理
-          route.component = Layout
-        } else {
-          const component = route.component
-          route.component = resolve => {
-            require(['@/views' + component + '.vue'], resolve)
+function filterAsyncRouter(routes,asyncRouterMap) {
+   console.log(555555)
+  console.log(routeMap)
+    asyncRouterMap.forEach(route => {
+      const menu ={}
+      console.log(route)
+      routeMap.forEach( item =>{
+          console.log(item)
+          if (route.component === 'Layout' &&  item.path == route.path) { // Layout组件特殊处理
+            Object.assign(menu, item)
           }
-        }
-      }
-      if (route.children && route.children.length) {
-        route.children = filterAsyncRouter(route.children)
-      }
-      return true
+        })
+      routes.push(menu)
     })
-    return accessedRouters
-  } catch (e) {
-    console.log(e)
-  }
+  console.log(routes)
 }
 
 const state = {
@@ -34,24 +29,28 @@ const state = {
 const mutations = {
   SET_ROUTES: (state, routes) => {
     state.addRoutes = routes
-    state.routes = constantRoutes.concat(routes)
+    state.routes = constantRouterMap.concat(routes)
   }
 }
 
 const actions = {
   async generateRoutes({ commit }, roles) {
     // 取后台路由
-
     const asyncRouter = await getMenu()
-
     return new Promise(resolve => {
       const tmp = asyncRouter.data.permissionList
-      const accessedRoutes = filterAsyncRouter(tmp)
-       console.log(accessedRoutes)
-      commit('SET_ROUTES', accessedRoutes)
-      resolve(accessedRoutes)
+      console.log("获取资源")
+      console.log(tmp)
+      filterAsyncRouter(asyncRoutes,tmp)
+      // console.log(asyncRoutes)
+      commit('SET_ROUTES', asyncRoutes)
+      /*commit('SET_NAME',asyncRouter.data.)*/
+      console.log(asyncRoutes)
+      //router.addRoutes(tmp)
+      console.log("hell0")
+      resolve(asyncRoutes)
     })
-  }
+    }
 }
 
 export default {

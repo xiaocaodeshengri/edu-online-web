@@ -34,32 +34,23 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
+         // debugger
           const data = response.data
           setToken(data.token)
           commit('SET_TOKEN', data.token)
+          commit('SET_NAME', data.name)
           resolve()
         }).catch(error => {
           reject(error)
         })
       })
     },
-    // Login({ commit }) {
-    //   const data = {
-    //     'token': 'helen'
-    //   }
-    //   setToken(data.token)// 将token存储在cookie中
-    //   commit('SET_TOKEN', data.token)
-    // },
 
     // 获取用户信息
     async GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
           const data = response.data
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', data.roles)
-          }
-
           const buttonAuthList = []
           data.permissionValueList.forEach(button => {
             buttonAuthList.push(button)

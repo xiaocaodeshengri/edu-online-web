@@ -55,7 +55,6 @@
             <el-button type="primary" icon="el-icon-edit"></el-button>
           </router-link>
 
-          <el-button type="primary" icon="el-icon-share"></el-button>
           <el-button type="primary" icon="el-icon-delete" @click="removeDataById(scope.row.id)"></el-button>
         </template>
       </el-table-column>
