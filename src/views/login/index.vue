@@ -29,8 +29,8 @@
         </el-button>
       </el-form-item>
       <div class="tips">
-        <span style="margin-right:20px;">username: Admin</span>
-        <span> password: Admin</span>
+        <span style="margin-right:20px;">管理员用户名密码: Admin  Admin</span>
+        <span> 学生老师密码: 123456</span>
       </div>
     </el-form>
   </div>

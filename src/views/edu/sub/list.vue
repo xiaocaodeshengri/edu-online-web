@@ -22,25 +22,25 @@
       <el-table-column type="expand" label="查看" width="80">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="商品名称">
+            <el-form-item label="课程名称">
               <span>{{ props.row.name }}</span>
             </el-form-item>
-            <el-form-item label="所属店铺">
+            <el-form-item label="讲师">
               <span>{{ props.row.shop }}</span>
             </el-form-item>
-            <el-form-item label="商品 ID">
+            <el-form-item label="订阅人数">
               <span>{{ props.row.id }}</span>
             </el-form-item>
-            <el-form-item label="店铺 ID">
+            <el-form-item label="讲师名">
               <span>{{ props.row.shopId }}</span>
             </el-form-item>
-            <el-form-item label="商品分类">
+            <el-form-item label="分类">
               <span>{{ props.row.category }}</span>
             </el-form-item>
-            <el-form-item label="店铺地址">
+            <el-form-item label="课程描述">
               <span>{{ props.row.address }}</span>
             </el-form-item>
-            <el-form-item label="商品描述">
+            <el-form-item label="备注">
               <span>{{ props.row.desc }}</span>
             </el-form-item>
           </el-form>
